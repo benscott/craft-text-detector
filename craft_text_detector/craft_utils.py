@@ -412,6 +412,8 @@ def getDetBoxes(textmap, linkmap, text_threshold, link_threshold, low_text, poly
 
 def adjustResultCoordinates(polys, ratio_w, ratio_h, ratio_net=2):
     if len(polys) > 0:
+        # Filter none from polys
+        polys = [poly for poly in polys if poly is not None]
         polys = np.array(polys)
         for k in range(len(polys)):
             if polys[k] is not None:
